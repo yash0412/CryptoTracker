@@ -38,7 +38,7 @@ bot.on('message', async (msg) => {
       return;
     }
     try {
-      const price = await fetchBTCInfo(`${command.toLowerCase()}inr`);
+      const price = await fetchCryptoInfo(`${command.toLowerCase()}inr`);
       if (price)
         msg.reply(
           `${price.name} - ₹${price.last} at ${new Date().toLocaleString()}`
@@ -52,7 +52,7 @@ bot.on('message', async (msg) => {
   }
 });
 
-function fetchBTCInfo(currencyName) {
+function fetchCryptoInfo(currencyName) {
   return axios
     .get(wazirXAPI)
     .then((res) => {
